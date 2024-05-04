@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Form</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Dark mode variant of Tailwind CSS -->
+    <style>
+        @media (prefers-color-scheme: dark) {
+            /* Set dark mode styles */
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <div class="container mx-auto px-4 py-8 flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-center">User Input Form</h1>
+        <a href="/read" class="text-blue-500 hover:text-blue-700">View All Users</a>
+    </div>
+
+    <div class="w-11/12 md:w-3/5 lg:w-2/5 xl:w-1/3 mx-auto my-5 border border-gray-700 rounded-lg shadow-lg">
+        <div class="container mx-auto px-4 py-8">
+
+            <form action="/update/<%= user._id %>" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="name" class="block mb-1 text-sm">Name:</label>
+                    <input type="text" id="name" name="name" value="<%= user.name %>"
+                        class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block mb-1 text-sm">Email:</label>
+                    <input type="email" id="email" name="email" value="<%= user.email %>"
+                        class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="age" class="block mb-1 text-sm">Age:</label>
+                    <input type="number" id="age" name="age" value="<%= user.age %>"
+                        class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="image" class="block mb-1 text-sm">Image:</label>
+                    <img src="/image/<%= user._id %>" alt="User Image" class="w-32 h-32 rounded-full mx-auto mb-2">
+                    <label for="image" class="block mb-1 text-sm">Update image:</label>
+                    <input type="file" id="image" name="image" placeholder="Choose new image"
+                        class="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 focus:outline-none focus:border-blue-500">
+                </div>
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

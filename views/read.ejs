@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Dark mode variant of Tailwind CSS -->
+    <style>
+        @media (prefers-color-scheme: dark) {
+            /* Set dark mode styles */
+            @tailwind base;
+            @tailwind components;
+            @tailwind utilities;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+
+    <div class="container mx-auto px-4 pt-8 flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-center">User Details</h1>
+        <a href="/" class="text-blue-500 hover:text-blue-700">New User</a>
+    </div>
+
+    <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-8">
+
+            
+            <% if(users.length> 0) {%>
+                <div class="flex gap-2 flex-wrap">
+
+                    <% users.forEach(function(user){ %>
+                        <div class="bg-gray-800  border border-gray-700 rounded-lg shadow-lg p-6 mb-6">
+                            <h2 class="text-2xl font-bold mb-4">User Details</h2>
+                            <div class="mb-4">
+                                <img src="/image/<%= user._id %>" alt="<%= user.name %>"
+                                    class="w-32 h-32 rounded-full mx-auto">
+
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-gray-400"><span class="font-bold">Name:</span>
+                                    <%= user.name %>
+                                </p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-gray-400"><span class="font-bold">Email:</span>
+                                    <%= user.email %>
+                                </p>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-gray-400"><span class="font-bold">Age:</span>
+                                    <%= user.age %>
+                                </p>
+                            </div>
+                            <div class="flex justify-between">
+                                <a href="/edit/<%= user._id %>"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                                <a href="/delete/<%= user._id %>"
+                                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</a>
+                            </div>
+                        </div>
+                        <% }) %>
+
+
+
+                </div>
+                <%} else {%>
+                    <h2>No Users </h2>
+                    <% } %>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
